@@ -1,0 +1,145 @@
+<!--------CC1M - Gabriel Alejnadro L. M.-------->
+<!--------é necessario conexão internet para vizualizar as imagens-------->
+<html>
+  <head>
+    <title>GameStore</title>
+    <style>
+table, th, td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+    </style>
+  </head>
+  <body BGCOLOR="White">
+  <p style="background-color:LightGray;">
+    <img src="https://image.flaticon.com/icons/svg/33/33658.svg" style="width:48px;height:48px;" alt="gamestore_icon"> 
+    <b><font size="10">GameStore</font></b>
+  </p>
+  <hr>
+    <table style="width:100%">
+    <!--------TABELA BASE-------->
+      <tr>
+        <td style="width:30%"></td>
+        <td>Nome</td>
+        <td style="width:20%">Descrição</td>
+        <td>Data de lançamento</td>
+        <td align="center">Preço</td>
+        <td align="center">Carrinho</td>
+      </tr>
+      <!--------DARKSOULS III-------->
+      <tr BGCOLOR="LightGray">
+        <td><a href="GameStore_DarkSouls3.html"><img src="http://cdn.akamai.steamstatic.com/steam/apps/374320/header.jpg?t=1511366897" alt="DarkSouls 3"></a></td>
+        <td>DARK SOULS™ III</td>
+        <td>DARK SOULS™ continua a ultrapassar seus próprios limites em um ambicioso novo capítulo da série que definiu um gênero e que é aclamada pela crítica. Prepare-se para abraçar a escuridão!</td>
+        <td align="center">11/abr/2016</td>
+        <td align="center">R$ 159,90</td>
+        <td align="center">
+          <form>
+            <input type="checkbox" name="carrinho" value="item1" style="width:24px;height:24px;">
+          </form>
+        </td>
+      </tr>
+      <!--------RAINBOWSIX SIEGE-------->
+      <tr>
+        <td><a href="GameStone_RainbowSix.html"><img src="http://cdn.edgecast.steamstatic.com/steam/apps/359550/header.jpg?t=1520008016" alt="Rainbow Six"></a></td>
+        <td>Tom Clancy's Rainbow Six® Siege</td>
+        <td>O Tom Clancy's Rainbow Six Siege é o próximo lançamento da aclamada franquia de FPS desenvolvida pelo renomado estúdio Ubisoft Montreal.</td>
+        <td align="center">01/dez/2015</td>
+        <td align="center">R$ 49,99</td>
+        <td align="center">
+          <form>
+            <input type="checkbox" name="carrinho" value="item2" style="width:24px;height:24px;">
+          </form>
+        </td>
+      </tr>
+      <!--------Grand Theft Auto V-------->
+      <tr BGCOLOR="LightGray">
+        <td><a href="GameStore_GTAV.html"><img src="http://cdn.edgecast.steamstatic.com/steam/apps/271590/header.jpg?t=1516043170" alt="Grand Theft Auto V"></a></td>
+        <td>Grand Theft Auto V</td>
+        <td>Grand Theft Auto V para PC oferece aos jogadores a opção de explorar o gigantesco e premiado mundo de Los Santos e Blaine County em resoluções de até 4K e além, assim como a chance de experimentar o jogo rodando a 60 FPS (quadros por segundo).</td>
+        <td align="center">14/abr/2015</td>
+        <td align="center">R$ 99,99</td>
+        <td align="center">
+          <form>
+            <input type="checkbox" name="carrinho" value="item3" style="width:24px;height:24px;">
+          </form>
+        </td>
+      </tr>
+      <!--------The Witcher 3: Wild Hunt-------->
+      <tr>
+        <td><a href="GameStore_TheWitcher3.html"><img src="http://cdn.edgecast.steamstatic.com/steam/apps/292030/header.jpg?t=1509077015" alt="The Witcher 3: Wild Hunt"></a></td>
+        <td>The Witcher® 3: Wild Hunt</td>
+        <td>Jogue como um caçador de recompensas exilado em busca da criança da profecia em um mundo de fantasia aberto, problemático e moralmente indiferente.</td>
+        <td align="center">18/mai/2015</td>
+        <td align="center">R$ 79,99</td>
+        <td align="center">
+          <form>
+            <input type="checkbox" name="carrinho" value="item4" style="width:24px;height:24px;">
+          </form>
+        </td>
+      </tr>
+      <!--------FINAL FANTASY XV WINDOWS EDITION-------->
+      <tr BGCOLOR="LightGray">
+        <td><a href="GameStore_FinalFantasyXV.html"><img src="http://cdn.edgecast.steamstatic.com/steam/apps/637650/header.jpg?t=1520000923" alt="FINAL FANTASY XV WINDOWS EDITION"></a></td>
+        <td>FINAL FANTASY XV WINDOWS EDITION</td>
+        <td>Parta nesta jornada, agora com qualidade definitiva. Com muito conteúdo bônus e suporte a gráficos em Ultra High-Resolution e HDR 10, agora você pode viver a experiência maravilhosa e bem feita de FINAL FANTASY XV como nunca antes.</td>
+        <td align="center">06/mar/2015</td>
+        <td align="center">R$ 165,99</td>
+        <td align="center">
+          <form>
+            <input type="checkbox" name="carrinho" value="item5" style="width:24px;height:24px;">
+          </form>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <!--------COMPRA-------->
+    <h2>Compra dos itens selecionados</h2>
+    <form>
+      <fieldset style="background-color:LightGray;">
+        <legend><b>Informações para solicitar pedido</b></legend>
+          <p>
+          <!--------INPUTS DOS DADOS-------->
+            Nome Completo:<br>
+            <input type="text" name="nome" size="35"><br><p></p>
+            CPF:<br>
+            <input type="text" name="cpf"><br><p></p>
+            Cartão de Crédito:<br>
+            <input type="text" name="cartao_de_credito"><br><p></p>
+            <hr>
+            E-mail:<br>
+            <input type="email" name="email" size="30"><br><p></p>
+            Telefone:<br>
+            <input type="text" name="telefone"><br><p></p>
+            <hr>
+            CEP:<br>
+            <input type="text" name="cep"><br><p></p>
+            Endereço:<br>
+            <input type="text" name="endereço"><br><p></p>
+            Bairro:<br>
+            <input type="text" name="bairro"><br><p></p>
+            Número:<br>
+            <input type="text" name="número" size="4"><br>
+            <!--Botão para resetar dados-->
+            <p  align="right">
+              <input type="reset" value="Resetar dados">
+            </p>
+          </p>
+      </fieldset>
+    </form>
+    
+    <!--Botão para solicitar compra-->
+    <p>
+    </p>
+    <form align="center">
+      <input type="button" value="Solicitar pedido" onclick="msg()">
+    </form>
+
+    <!--Mensagem quando a compra for enviada-->
+    <script>
+function msg() {
+    alert("Pedido feito com sucesso!");
+}
+		</script>
+  </body>
+</html>
