@@ -1,4 +1,5 @@
 //Gabriel Alejandro L. M. - CC1M
+//Ler a velocidade do carro, se passar de 80km/h terá que pagar uma multa de R$7,00 por km excedido
 #include <stdio.h>
 
 int main(){
@@ -16,4 +17,6 @@ int main(){
     else{
         printf("Tenha um bom dia, dirija com seguranca!");
     }
+
+    return 0;
 }
