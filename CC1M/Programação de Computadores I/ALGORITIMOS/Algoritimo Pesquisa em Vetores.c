@@ -22,7 +22,7 @@ int main(){
     //Realizar uma busca exaustiva, elemento por elemento
     //OBS.: Este código não é muito eficiênte quando o vetor possui muitos elementos
 
-    //Enquanto o valor do vetor for diferente do valor do usuário *E* o index do vetor for menor que o valor do vetor, continuar executando
+    //Enquanto o valor do vetor for diferente do valor do usuário *E* o index do vetor for menor que o tamanho do vetor, continuar executando
     while((v[pos] != x )&(pos < TAM)){
         pos++; //Somar 1 a variável "pos" e continuar a buscar no próximo index do vetor
     }
