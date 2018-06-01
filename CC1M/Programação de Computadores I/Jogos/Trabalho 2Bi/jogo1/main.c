@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define TAM 3
 #define TAMJOGADOR 7
-
 
 
 
@@ -14,13 +14,14 @@ int main()
     int vJogador[TAMJOGADOR], n = 100, c = 3, xp = 0, fimdejogo, i;
     int danominCavaleiro[TAM], danomaxCavaleiro[TAM], danominArqueiro[TAM],danomaxArqueiro[TAM], danominMago[TAM], danomaxMago[TAM];
     int vCPU[TAM];
-    int danominCavaleirocpu[TAM], danomaxCavaleirocpu[TAM], danominArqueirocpu[TAM],danomaxArqueirocpu[TAM], danominMagocpu[TAM], danomaxMagocpu[TAM];
     int atkspeedcav[TAM], atkspeedarq[TAM], atkspeedmag[TAM];
     char op, armaCavaleiro[TAM][20], armaArqueiro[TAM][20], armaMago[TAM][20], armaCavaleiroCPU[TAM][20], armaArqueiroCPU[TAM][20], armaMagoCPU[TAM][20];
     int boolArmaSelecionada = 0;
     int partida = 0;
     int atkDoJogador, atkDoCPU;
     int totalDeDanoCausado = 0, totalDeDanoRecebido = 0;
+
+    srand(time(NULL));
 
     //classe[0] = 0; "Cavaleiro";
     //classe[1] = 1; "Arqueiro";
@@ -41,7 +42,7 @@ int main()
         strcpy(armaMago[2], "Espada Magica");
 
 
-        vJogador[1] = rand()%n + 50;
+        vJogador[1] = rand()%50 + 51;
 
         //Ataque Speed
         atkspeedcav[0] = 2;
@@ -101,6 +102,8 @@ int main()
         printf("Digite 0 para Cavaleiro, 1 para Arqueiro e 2 para Mago\n");
         scanf("%d", &vJogador[0]);
 
+        printf("> Voce escolheu a classe : %d, com %d de vida.\n", vJogador[0], vJogador[1]);
+        getchar();
 
 
         while(vJogador[1] > 0){
@@ -242,11 +245,11 @@ int main()
             // a cada nivel passado pelo jogador, mob mais dificil
 
             printf("\n+ INICIAR LUTA +\n");
-
+            vCPU[3] = 2;
             //Luta contra CPU
             while(vCPU[1] > 0){
                 partida++;
-
+                printf("\n>> TURNO %d\n", partida);
                 //Jogador
                 if(partida%vJogador[3] == 0){
                     if(vJogador[0] == 0){
@@ -277,11 +280,11 @@ int main()
                     printf("!======================================!\n");
                     printf("+ Jogador ataca!\n");
                     printf("+ Jogador causou %d de dano\n", atkDoJogador);
-                    printf("- Inimigo %i HP\n",vCPU[1]);
+                    printf("- Inimigo %d HP\n", vCPU[1]);
                     printf("!======================================!\n");
                 }
                 else{
-                     printf("- Nao ha como atacar agora\n");
+                     printf("> Nao ha como atacar agora\n");
                 }
 
                 //Inimigo
@@ -289,21 +292,21 @@ int main()
                     if(vCPU[0] == 0){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominCavaleirocpu[i], danomaxCavaleirocpu[i]);
+                                atkDoCPU = rand()%(danominCavaleiro[i], danomaxCavaleiro[i]);
                             }
                         }
                     }
                     else if(vCPU[0] == 1){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominArqueirocpu[i], danomaxArqueirocpu[i]);
+                                atkDoCPU = rand()%(danominArqueiro[i], danomaxArqueiro[i]);
                             }
                         }
                     }
                     else if(vCPU[0] == 2){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominMagocpu[i], danomaxMagocpu[i]);
+                                atkDoCPU = rand()%(danominMago[i], danomaxMago[i]);
                             }
                         }
                     }
@@ -314,11 +317,11 @@ int main()
                     printf("!======================================!\n");
                     printf("+ Inimigo ataca!\n");
                     printf("+ Inimigo causou %d de dano\n", atkDoCPU);
-                    printf("- Jogador %i HP\n",vCPU[1]);
+                    printf("- Jogador %d HP\n", vJogador[1]);
                     printf("!======================================!\n");
                 }
                 else{
-                     printf("- O inimigo ainda nao pode atacar\n");
+                     printf("> O inimigo ainda nao pode atacar\n");
                 }
             }
 
@@ -327,8 +330,6 @@ int main()
 
 
     }
-
-
 
      return 0;
 }
