@@ -16,7 +16,7 @@ int main()
     int danominCavaleirocpu[TAM], danomaxCavaleirocpu[TAM], danominArqueirocpu[TAM],danomaxArqueirocpu[TAM], danominMagocpu[TAM], danomaxMagocpu[TAM];
     int atkspeedcav[TAM], atkspeedarq[TAM], atkspeedmag[TAM];
     char op, armaCavaleiro[TAM][20], armaArqueiro[TAM][20], armaMago[TAM][20], armaCavaleiroCPU[TAM][20], armaArqueiroCPU[TAM][20], armaMagoCPU[TAM][20];
-
+    int boolArmaSelecionada = 0;
 
     //classe[0] = 0; "Cavaleiro";
     //classe[1] = 1; "Arqueiro";
@@ -175,26 +175,45 @@ int main()
             }
             //---------
             // escolher a arma
-            printf("\n!======================================!\n");
-            if(vJogador[0] == 0){
-                for(i = 0; i < TAM; i++){
-                    printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaCavaleiro[i], danominCavaleiro[i], danomaxCavaleiro[i], atkspeedcav[i]);
+            do{
+                printf("\n!======================================!\n");
+                boolArmaSelecionada = 0; //Resetar Bool de Arma Selecionada
+                //Verificar Classe Do Jogador e Imprimir as Possiveis armas
+                if(vJogador[0] == 0){
+                    for(i = 0; i < TAM; i++){
+                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaCavaleiro[i], danominCavaleiro[i], danomaxCavaleiro[i], atkspeedcav[i]);
+                    }
                 }
-            }
-            else if(vJogador[0] == 1){
-                for(i=0; i < TAM; i++){
-                    printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaArqueiro[i], danominArqueiro[i], danomaxArqueiro[i], atkspeedarq[i]);
+                else if(vJogador[0] == 1){
+                    for(i=0; i < TAM; i++){
+                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaArqueiro[i], danominArqueiro[i], danomaxArqueiro[i], atkspeedarq[i]);
+                    }
                 }
-            }
-            else if(vJogador[0] == 2){
-                for(i=0; i < TAM; i++){
-                    printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaMago[i], danominMago[i], danomaxMago[i], atkspeedmag[i]);
+                else if(vJogador[0] == 2){
+                    for(i=0; i < TAM; i++){
+                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaMago[i], danominMago[i], danomaxMago[i], atkspeedmag[i]);
+                    }
                 }
-            }
-            printf("!======================================!\n");
-            printf("> Digite a arma que voce queira usar: ");
-            scanf("%d", &vJogador[2]);
-            //Adicao de Gabriel A.
+                printf("!======================================!\n");
+
+                //Obter Arma do Jogador
+                printf("> Digite a arma que voce queira usar: ");
+                scanf("%d", &vJogador[2]);
+
+                //Verificar se Valor digitado pelo Jogador é valido
+                for (i=0; i < TAM; i++){
+                    if(vJogador[2] == i){
+                        boolArmaSelecionada = 1;
+                    }
+                }
+                printf("%i\n", boolArmaSelecionada);
+                //Se for falso, dizer que Opção é Inválida
+                if(boolArmaSelecionada == 0){
+                   printf("! Opcao Invalida, Tente novamente... !\n");
+                }
+            }while(boolArmaSelecionada == 0);
+
+            //Definir Ataque Speed, de acordo com a arma que jogador escolheu
             //Atk Speed = Vetor de Atk Speed da <classe>[index da arma do jogador]
             if(vJogador[0] == 0){
                 vJogador[3] = atkspeedcav[vJogador[2]];
@@ -205,9 +224,6 @@ int main()
             else if(vJogador[0] == 2){
                vJogador[3] = atkspeedmag[vJogador[2]];
             }
-
-
-
 
         }//fim do while
 
