@@ -255,21 +255,34 @@ int main()
                     if(vJogador[0] == 0){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoJogador = rand()%(danominCavaleiro[i], danomaxCavaleiro[i]);
+                                atkDoJogador = rand()%danomaxCavaleiro[i];
+                                printf("---ATK JOG %d\n", atkDoJogador); ////////////
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominCavaleiro[i]){
+                                    atkDoJogador = danominCavaleiro[i];
+                                }
                             }
                         }
                     }
                     else if(vJogador[0] == 1){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoJogador = rand()%(danominArqueiro[i], danomaxArqueiro[i]);
+                                atkDoJogador = rand()%danomaxArqueiro[i];
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominArqueiro[i]){
+                                    atkDoJogador = danominArqueiro[i];
+                                }
                             }
                         }
                     }
                     else if(vJogador[0] == 2){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoJogador = rand()%(danominMago[i], danomaxMago[i]);
+                                atkDoJogador = rand()%danomaxMago[i];
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominMago[i]){
+                                    atkDoJogador = danominMago[i];
+                                }
                             }
                         }
                     }
@@ -292,21 +305,33 @@ int main()
                     if(vCPU[0] == 0){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominCavaleiro[i], danomaxCavaleiro[i]);
+                                atkDoCPU = rand()%danomaxCavaleiro[i];
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominCavaleiro[i]){
+                                    atkDoJogador = danominCavaleiro[i];
+                                }
                             }
                         }
                     }
                     else if(vCPU[0] == 1){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominArqueiro[i], danomaxArqueiro[i]);
+                                atkDoCPU = rand()%danomaxArqueiro[i];
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominArqueiro[i]){
+                                    atkDoJogador = danominArqueiro[i];
+                                }
                             }
                         }
                     }
                     else if(vCPU[0] == 2){
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
-                                atkDoCPU = rand()%(danominMago[i], danomaxMago[i]);
+                                atkDoCPU = rand()%danomaxMago[i];
+                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                if(atkDoJogador < danominMago[i]){
+                                    atkDoJogador = danominMago[i];
+                                }
                             }
                         }
                     }
