@@ -109,277 +109,273 @@ int main()
         scanf("%d", &vJogador[0]);
         if(vJogador[0] < 3 && vJogador[0] >= 0){
 
-        printf("> Voce escolheu a classe : %d, com %d de vida.\n", vJogador[0], vJogador[1]);
-        getchar();
+            printf("> Voce escolheu a classe : %d, com %d de vida.\n", vJogador[0], vJogador[1]);
+            getchar();
 
+            while(vJogador[1] > 0){
 
-        while(vJogador[1] > 0){
-
-            // Aqui inicia sua aventura pelo game, e ele entra na dungeon
-            // por o codigo de avistamento de inimigos e alerta para luta
-            //---------
-            // ira ser printado para o jogador qual inimigo ele ira enfrentar
-            // apos alertar, ele devera escolher a sua arma para enfrentar o inimigo
-            // gerar para o vCPU[0] uma classe
-            vCPU[0] = rand()%c;
-            switch(vCPU[0]){
-            case 0:
-                printf("> O seu inimigo eh um cavaleiro!\n");
-                break;
-
-            case 1:
-                printf("> O seu inimigo eh um arqueiro!\n");
-                break;
-
-            case 2:
-                printf("> O seu inimigo eh um mago!\n");
-                break;
-            }
-            //------------
-            // gerar para o vCPU[1] uma hp
-            vCPU[1] = rand()%50 + 51;
-            printf("> Parece que ele tem %d de vida..\n", vCPU[1]);
-            //------------
-            // gerar para o vCPU[2] uma arma
-            vCPU[2] = rand()%c;
-            if(vCPU[0] == 0){ //cavaleiro
-                switch(vCPU[2]){
+                // Aqui inicia sua aventura pelo game, e ele entra na dungeon
+                // por o codigo de avistamento de inimigos e alerta para luta
+                //---------
+                // ira ser printado para o jogador qual inimigo ele ira enfrentar
+                // apos alertar, ele devera escolher a sua arma para enfrentar o inimigo
+                // gerar para o vCPU[0] uma classe
+                vCPU[0] = rand()%c;
+                switch(vCPU[0]){
                 case 0:
-                printf("> Ele tem uma espada.. longa!\n");
-                break;
+                    printf("> O seu inimigo eh um cavaleiro!\n");
+                    break;
 
                 case 1:
-                printf("> Ele tem uma espada curta, porem afiada!\n");
-                break;
+                    printf("> O seu inimigo eh um arqueiro!\n");
+                    break;
 
                 case 2:
-                printf("> Ele tem uma lanca, muito grande!\n");
-                break;
+                    printf("> O seu inimigo eh um mago!\n");
+                    break;
                 }
-            }
-            else if(vCPU[0] == 1){
-                switch(vCPU[2]){
-                case 0:
-                printf("> Cuidado! Ele tem um arco longo!\n");
-                break;
+                //------------
+                // gerar para o vCPU[1] uma hp
+                vCPU[1] = rand()%50 + 51;
+                printf("> Parece que ele tem %d de vida..\n", vCPU[1]);
+                //------------
+                // gerar para o vCPU[2] uma arma
+                vCPU[2] = rand()%c;
+                if(vCPU[0] == 0){ //cavaleiro
+                    switch(vCPU[2]){
+                    case 0:
+                    printf("> Ele tem uma espada.. longa!\n");
+                    break;
 
-                case 1:
-                printf("> Ele tem uma besta, com flechas afiadas!\n");
-                break;
+                    case 1:
+                    printf("> Ele tem uma espada curta, porem afiada!\n");
+                    break;
 
-                case 2:
-                printf("> Ele tem uma besta, com flechas afiadas!\n");
-                break;
-                }
-            }
-            else if(vCPU[0] == 2){
-                switch(vCPU[2]){
-                case 0:
-                printf("> Ele parece ter um cajado...\n");
-                break;
-
-                case 1:
-                printf("> Ele tem um livro magico, com muitas palavras!\n");
-                break;
-
-                case 2:
-                printf("> Ele tem um livro magico, com muitas palavras!\n");
-                break;
-                }
-            }
-            //---------
-            // escolher a arma
-            do{
-                printf("\n!======================================!\n");
-                boolArmaSelecionada = 0; //Resetar Bool de Arma Selecionada
-                //Verificar Classe Do Jogador e Imprimir as Possiveis armas
-                if(vJogador[0] == 0){
-                    for(i = 0; i < TAM; i++){
-                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaCavaleiro[i], danominCavaleiro[i], danomaxCavaleiro[i], atkspeedcav[i]);
+                    case 2:
+                    printf("> Ele tem uma lanca, muito grande!\n");
+                    break;
                     }
                 }
-                else if(vJogador[0] == 1){
-                    for(i=0; i < TAM; i++){
-                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaArqueiro[i], danominArqueiro[i], danomaxArqueiro[i], atkspeedarq[i]);
+                else if(vCPU[0] == 1){
+                    switch(vCPU[2]){
+                    case 0:
+                    printf("> Cuidado! Ele tem um arco longo!\n");
+                    break;
+
+                    case 1:
+                    printf("> Ele tem uma besta, com flechas afiadas!\n");
+                    break;
+
+                    case 2:
+                    printf("> Ele tem uma besta, com flechas afiadas!\n");
+                    break;
                     }
                 }
-                else if(vJogador[0] == 2){
-                    for(i=0; i < TAM; i++){
-                        printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaMago[i], danominMago[i], danomaxMago[i], atkspeedmag[i]);
+                else if(vCPU[0] == 2){
+                    switch(vCPU[2]){
+                    case 0:
+                    printf("> Ele parece ter um cajado...\n");
+                    break;
+
+                    case 1:
+                    printf("> Ele tem um livro magico, com muitas palavras!\n");
+                    break;
+
+                    case 2:
+                    printf("> Ele tem um livro magico, com muitas palavras!\n");
+                    break;
                     }
                 }
-                printf("!======================================!\n");
-
-                //Obter Arma do Jogador
-                printf("> Que Arma desejas usar ?: ");
-                scanf("%d", &vJogador[2]);
-
-                //Verificar se Valor digitado pelo Jogador é valido
-                for (i=0; i < TAM; i++){
-                    if(vJogador[2] == i){
-                        boolArmaSelecionada = 1;
-                    }
-                }
-                //Se for falso, dizer que Opção é Inválida
-                if(boolArmaSelecionada == 0){
-                   printf("! Opcao Invalida, Não tente fugir!... !\n");
-                }
-            }while(boolArmaSelecionada == 0);
-
-            //Definir Ataque Speed, de acordo com a arma que jogador escolheu
-            //Atk Speed = Vetor de Atk Speed da <classe>[index da arma do jogador]
-            if(vJogador[0] == 0){
-               vJogador[3] = atkspeedcav[vJogador[2]];
-            }
-            else if(vJogador[0] == 1){
-               vJogador[3] = atkspeedarq[vJogador[2]];
-            }
-            else if(vJogador[0] == 2){
-               vJogador[3] = atkspeedmag[vJogador[2]];
-            }
-
-            //---------
-            // inicio da luta
-            // luta por turno ate um dos 2 morrer
-            //---------
-            // jogador perdeu = acaba o jogo
-            // jogador ganhou = +xp, vida recover, proximo nivel
-            //---------
-            // no final de cada luta, perguntar ao jogador se quer continuar
-            // se sim = continuar dungeon
-            // se nao = finalizar game
-            //---------
-            // a cada nivel passado pelo jogador, mob mais dificil
-
-            printf("\n+ INICIAR LUTA +\n");
-            vCPU[3] = 2;
-            //Luta contra CPU
-            while(vCPU[1] > 0){
-                partida++;
-                printf("\n>> TURNO %d\n", partida);
-                //Jogador
-                if(partida%vJogador[3] == 0){
+                //---------
+                // escolher a arma
+                do{
+                    printf("\n!======================================!\n");
+                    boolArmaSelecionada = 0; //Resetar Bool de Arma Selecionada
+                    //Verificar Classe Do Jogador e Imprimir as Possiveis armas
                     if(vJogador[0] == 0){
-                        for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoJogador = rand()%danomaxCavaleiro[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominCavaleiro[i]){
-                                    atkDoJogador = danominCavaleiro[i];
-                                }
-                            }
+                        for(i = 0; i < TAM; i++){
+                            printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaCavaleiro[i], danominCavaleiro[i], danomaxCavaleiro[i], atkspeedcav[i]);
                         }
                     }
                     else if(vJogador[0] == 1){
                         for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoJogador = rand()%danomaxArqueiro[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominArqueiro[i]){
-                                    atkDoJogador = danominArqueiro[i];
-                                }
-                            }
+                            printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaArqueiro[i], danominArqueiro[i], danomaxArqueiro[i], atkspeedarq[i]);
                         }
                     }
                     else if(vJogador[0] == 2){
                         for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoJogador = rand()%danomaxMago[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominMago[i]){
-                                    atkDoJogador = danominMago[i];
-                                }
-                            }
+                            printf("+ [%d] %s | ATK %d - %d | Velocidade de Ataque : %d|\n", i, armaMago[i], danominMago[i], danomaxMago[i], atkspeedmag[i]);
                         }
                     }
-
-                    vCPU[1] = vCPU[1] - atkDoJogador;
-                    totalDeDanoCausado += atkDoJogador;
-                    //HUD
-                    printf("!======================================!\n");
-                    printf("+ Jogador ataca!\n");
-                    printf("+ Causaste %d de dano!\n", atkDoJogador);
-                    printf("- Inimigo %d HP\n", vCPU[1]);
                     printf("!======================================!\n");
 
+                    //Obter Arma do Jogador
+                    printf("> Que Arma desejas usar ?: ");
+                    scanf("%d", &vJogador[2]);
 
+                    //Verificar se Valor digitado pelo Jogador é valido
+                    for (i=0; i < TAM; i++){
+                        if(vJogador[2] == i){
+                            boolArmaSelecionada = 1;
+                        }
+                    }
+                    //Se for falso, dizer que Opção é Inválida
+                    if(boolArmaSelecionada == 0){
+                       printf("! Opcao Invalida, Não tente fugir!... !\n");
+                    }
+                }while(boolArmaSelecionada == 0);
+
+                //Definir Ataque Speed, de acordo com a arma que jogador escolheu
+                //Atk Speed = Vetor de Atk Speed da <classe>[index da arma do jogador]
+                if(vJogador[0] == 0){
+                   vJogador[3] = atkspeedcav[vJogador[2]];
                 }
-                else{
-                     printf("> Nao podes atacar ainda!\n");
-                     Sleep(3000);
-                     }
-
-                //Inimigo
-                if(partida%vCPU[3] == 0){
-                    if(vCPU[0] == 0){
-                        for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoCPU = rand()%danomaxCavaleiro[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominCavaleiro[i]){
-                                    atkDoJogador = danominCavaleiro[i];
-                                }
-                            }
-                        }
-                    }
-                    else if(vCPU[0] == 1){
-                        for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoCPU = rand()%danomaxArqueiro[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominArqueiro[i]){
-                                    atkDoJogador = danominArqueiro[i];
-                                }
-                            }
-                        }
-                    }
-                    else if(vCPU[0] == 2){
-                        for(i=0; i < TAM; i++){
-                            if(vJogador[2] == i){
-                                atkDoCPU = rand()%danomaxMago[i];
-                                //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
-                                if(atkDoJogador < danominMago[i]){
-                                    atkDoJogador = danominMago[i];
-                                }
-                            }
-                        }
-                    }
-
-                   if(vCPU[1] > 0){
-
-                    vJogador[1] = vJogador[1] - atkDoCPU;
-                    totalDeDanoRecebido += atkDoCPU;
-                    //HUD
-                    printf("!======================================!\n");
-                    printf("+ Inimigo ataca!\n");
-                    printf("+ Recebestes %d de dano!\n", atkDoCPU);
-                    printf("- Jogador %d HP\n", vJogador[1]);
-                    printf("!======================================!\n");
-
-                    Sleep(3000);
-
-
-                   }
+                else if(vJogador[0] == 1){
+                   vJogador[3] = atkspeedarq[vJogador[2]];
+                }
+                else if(vJogador[0] == 2){
+                   vJogador[3] = atkspeedmag[vJogador[2]];
                 }
 
-                else{
-                     printf("> O inimigo ainda nao pode atacar\n");
-                }
-            }
-        partida = 0;
-        printf("!======================================!\n");
-        printf("> BOM TRABALHO , DERROTASTE O INIMIGO!\n");
-        printf("> RECEBESTES UMA RECOMPENSA PELA VITORIA\n");
-        printf("> UMA POCAO DE 30 DE HP ! \n");
-        printf("> CONTINUE ASSIM E ALCANCARA A GLORIA!\n");
-        printf("!======================================!\n");
-        vJogador[1] += 30;
-        }//fim do while
+                //---------
+                // inicio da luta
+                // luta por turno ate um dos 2 morrer
+                //---------
+                // jogador perdeu = acaba o jogo
+                // jogador ganhou = +xp, vida recover, proximo nivel
+                //---------
+                // no final de cada luta, perguntar ao jogador se quer continuar
+                // se sim = continuar dungeon
+                // se nao = finalizar game
+                //---------
+                // a cada nivel passado pelo jogador, mob mais dificil
 
-       }
-       else{
-        printf("Fostes derrotado? LEVANTA-TE E PROVE A TUA HONRA!!!\n");
-       }
+                printf("\n+ INICIAR LUTA +\n");
+                vCPU[3] = 2;
+                //Luta contra CPU
+                while(vCPU[1] > 0){
+                    partida++;
+                    printf("\n>> TURNO %d\n", partida);
+                    //Jogador
+                    if(partida%vJogador[3] == 0){
+                        if(vJogador[0] == 0){
+                            for(i=0; i < TAM; i++){
+                                if(vJogador[2] == i){
+                                    atkDoJogador = rand()%danomaxCavaleiro[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoJogador < danominCavaleiro[i]){
+                                        atkDoJogador = danominCavaleiro[i];
+                                    }
+                                }
+                            }
+                        }
+                        else if(vJogador[0] == 1){
+                            for(i=0; i < TAM; i++){
+                                if(vJogador[2] == i){
+                                    atkDoJogador = rand()%danomaxArqueiro[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoJogador < danominArqueiro[i]){
+                                        atkDoJogador = danominArqueiro[i];
+                                    }
+                                }
+                            }
+                        }
+                        else if(vJogador[0] == 2){
+                            for(i=0; i < TAM; i++){
+                                if(vJogador[2] == i){
+                                    atkDoJogador = rand()%danomaxMago[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoJogador < danominMago[i]){
+                                        atkDoJogador = danominMago[i];
+                                    }
+                                }
+                            }
+                        }
+
+                        vCPU[1] = vCPU[1] - atkDoJogador;
+                        totalDeDanoCausado += atkDoJogador;
+                        //HUD
+                        printf("!======================================!\n");
+                        printf("+ Jogador ataca!\n");
+                        printf("+ Causaste %d de dano!\n", atkDoJogador);
+                        printf("- Inimigo %d HP\n", vCPU[1]);
+                        printf("!======================================!\n");
+
+
+                    }
+                    else{
+                         printf("> Nao podes atacar ainda!\n");
+                         Sleep(3000);
+                    }
+
+                    //Inimigo
+                    if(partida%vCPU[3] == 0){
+                        if(vCPU[0] == 0){
+                            for(i=0; i < TAM; i++){
+                                if(vCPU[2] == i){
+                                    atkDoCPU = rand()%danomaxCavaleiro[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoCPU < danominCavaleiro[i]){
+                                        atkDoCPU = danominCavaleiro[i];
+                                    }
+                                }
+                            }
+                        }
+                        else if(vCPU[0] == 1){
+                            for(i=0; i < TAM; i++){
+                                if(vCPU[2] == i){
+                                    atkDoCPU = rand()%danomaxArqueiro[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoCPU < danominArqueiro[i]){
+                                        atkDoCPU = danominArqueiro[i];
+                                    }
+                                }
+                            }
+                        }
+                        else if(vCPU[0] == 2){
+                            for(i=0; i < TAM; i++){
+                                if(vCPU[2] == i){
+                                    atkDoCPU = rand()%danomaxMago[i];
+                                    //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
+                                    if(atkDoCPU < danominMago[i]){
+                                        atkDoCPU = danominMago[i];
+                                    }
+                                }
+                            }
+                        }
+
+                       if(vCPU[1] > 0){
+
+                            vJogador[1] = vJogador[1] - atkDoCPU;
+                            totalDeDanoRecebido += atkDoCPU;
+                            //HUD
+                            printf("!======================================!\n");
+                            printf("+ Inimigo ataca!\n");
+                            printf("+ Recebestes %d de dano!\n", atkDoCPU);
+                            printf("- Jogador %d HP\n", vJogador[1]);
+                            printf("!======================================!\n");
+
+                            Sleep(3000);
+                       }
+                    }
+                    else{
+                        printf("> O inimigo ainda nao pode atacar\n");
+                    }
+                }//Fim While de Batalha vCPU[1] > 0
+                partida = 0;
+                printf("!======================================!\n");
+                printf("> BOM TRABALHO , DERROTASTE O INIMIGO!\n");
+                printf("> RECEBESTES UMA RECOMPENSA PELA VITORIA\n");
+                printf("> UMA POCAO DE 30 DE HP ! \n");
+                printf("> CONTINUE ASSIM E ALCANCARA A GLORIA!\n");
+                printf("!======================================!\n");
+                vJogador[1] += 30;
+            }//fim do While vJogador > 0
+
+        }//Fim de If de verificação de classe / if(vJogador[0] < 3 && vJogador[0] >= 0)
+        else{
+            printf("Fostes derrotado? LEVANTA-TE E PROVE A TUA HONRA!!!\n");
+        }
 
     }
      return 0;
