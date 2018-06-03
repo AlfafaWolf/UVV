@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
 #define TAM 3
 #define TAMJOGADOR 7
 
@@ -91,16 +92,22 @@ int main()
     // a mao de sua filha em casamento..
     // entao assim, nosso nobre X, arrisca tudo na esperanca de conseguir o coracao da sua amada princesa, enfrentando os grandes perigos dos castelos
     // e dungeons que ira descobrir, e tambem os guerreiros que falharam e foram amaldicoados a permanecerem nos calaboucos
-
-    printf("|========================|Esta preparado para iniciar?|=====================|\n");
+    printf("Grande Jogador , es um grande soldado do exercito do Grande Rei !\n");
+    printf("Sabe-se que apenas o mais honrado ira ganhar a suprema recompensa...\n");
+    printf("A MAO DA FILHA DO REI EM CASAMENTO!!!\n");
+    printf("Mas para isso deves arriscar tua vida no Calabouco da Desgraca !\n");
+    printf("Um dos lugares mais sordidos da grande HighEarth !\n");
+    printf("Tua aventura nao sera nada facil nobre soldado !\n");
+    printf("|=============================|Estas preparado?|==============================|\n");
     printf("|Deseja comecar a sua aventura? [S/N]|\n");
     scanf("%c", &op);
 
     if(op == 's'){
 
-        printf("Existem 3 tipos de classe que os nobres guerreiros seguem, voce devera escolher entre uma das 3... escolha sabiamente:\n");
+        printf("Existem 3 tipos de classe que podes escolher ! Deves escolher entre uma das 3... escolha sabiamente:\n");
         printf("Digite 0 para Cavaleiro, 1 para Arqueiro e 2 para Mago\n");
         scanf("%d", &vJogador[0]);
+        if(vJogador[0] < 3 && vJogador[0] >= 0){
 
         printf("> Voce escolheu a classe : %d, com %d de vida.\n", vJogador[0], vJogador[1]);
         getchar();
@@ -204,7 +211,7 @@ int main()
                 printf("!======================================!\n");
 
                 //Obter Arma do Jogador
-                printf("> Digite a arma que voce quer usar: ");
+                printf("> Que Arma desejas usar ?: ");
                 scanf("%d", &vJogador[2]);
 
                 //Verificar se Valor digitado pelo Jogador é valido
@@ -215,7 +222,7 @@ int main()
                 }
                 //Se for falso, dizer que Opção é Inválida
                 if(boolArmaSelecionada == 0){
-                   printf("! Opcao Invalida, Tente novamente... !\n");
+                   printf("! Opcao Invalida, Não tente fugir!... !\n");
                 }
             }while(boolArmaSelecionada == 0);
 
@@ -256,7 +263,6 @@ int main()
                         for(i=0; i < TAM; i++){
                             if(vJogador[2] == i){
                                 atkDoJogador = rand()%danomaxCavaleiro[i];
-                                printf("---ATK JOG %d\n", atkDoJogador); ////////////
                                 //Verificar se o valor do Ataque dado rand() é menor que Ataque Mínimo
                                 if(atkDoJogador < danominCavaleiro[i]){
                                     atkDoJogador = danominCavaleiro[i];
@@ -292,13 +298,16 @@ int main()
                     //HUD
                     printf("!======================================!\n");
                     printf("+ Jogador ataca!\n");
-                    printf("+ Jogador causou %d de dano\n", atkDoJogador);
+                    printf("+ Causaste %d de dano!\n", atkDoJogador);
                     printf("- Inimigo %d HP\n", vCPU[1]);
                     printf("!======================================!\n");
+
+
                 }
                 else{
-                     printf("> Nao ha como atacar agora\n");
-                }
+                     printf("> Nao podes atacar ainda!\n");
+                     Sleep(3000);
+                     }
 
                 //Inimigo
                 if(partida%vCPU[3] == 0){
@@ -336,25 +345,42 @@ int main()
                         }
                     }
 
+                   if(vCPU[1] > 0){
+
                     vJogador[1] = vJogador[1] - atkDoCPU;
                     totalDeDanoRecebido += atkDoCPU;
                     //HUD
                     printf("!======================================!\n");
                     printf("+ Inimigo ataca!\n");
-                    printf("+ Inimigo causou %d de dano\n", atkDoCPU);
+                    printf("+ Recebestes %d de dano!\n", atkDoCPU);
                     printf("- Jogador %d HP\n", vJogador[1]);
                     printf("!======================================!\n");
+
+                    Sleep(3000);
+
+
+                   }
                 }
+
                 else{
                      printf("> O inimigo ainda nao pode atacar\n");
                 }
             }
-
-
+        partida = 0;
+        printf("!======================================!\n");
+        printf("> BOM TRABALHO , DERROTASTE O INIMIGO!\n");
+        printf("> RECEBESTES UMA RECOMPENSA PELA VITORIA\n");
+        printf("> UMA POCAO DE 30 DE HP ! \n");
+        printf("> CONTINUE ASSIM E ALCANCARA A GLORIA!\n");
+        printf("!======================================!\n");
+        vJogador[1] += 30;
         }//fim do while
 
+       }
+       else{
+        printf("Fostes derrotado? LEVANTA-TE E PROVE A TUA HONRA!!!\n");
+       }
 
     }
-
      return 0;
 }
