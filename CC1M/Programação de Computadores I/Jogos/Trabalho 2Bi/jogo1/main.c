@@ -4,7 +4,7 @@
 #include <windows.h>
 #define TAM 3
 #define TAMJOGADOR 7
-#define SLEEP 5000
+#define SLEEP 2000
 #define TAMSUFIX 12
 
 
@@ -12,11 +12,11 @@
 // Apos isso, o jogo ira iniciar e ira perguntar qual classe o jogador quer, se 0, entao cavaleiro, ira escolher entre 0/1/2, etc.
 
 int main(){
-    int vJogador[TAMJOGADOR], c = 3, xp = 0, fimdejogo = 0, i, numero;
+    int vJogador[TAMJOGADOR], c = 3, xp = 0, fimdejogo = 0, i, numero, op;
     int danominCavaleiro[TAM], danomaxCavaleiro[TAM], danominArqueiro[TAM],danomaxArqueiro[TAM], danominMago[TAM], danomaxMago[TAM];
     int vCPU[TAM];
     int atkspeedcav[TAM], atkspeedarq[TAM], atkspeedmag[TAM];
-    char op, armaCavaleiro[TAM][20], armaArqueiro[TAM][20], armaMago[TAM][20];
+    char armaCavaleiro[TAM][20], armaArqueiro[TAM][20], armaMago[TAM][20];
     int boolArmaSelecionada = 0;
     int partida = 0;
     int atkDoJogador, atkDoCPU;
@@ -24,6 +24,7 @@ int main(){
     char sufixosCPU[TAMSUFIX][20];
     int iSufix;
     int goldr = 0, goldi = 0, g = 50; //goldr = gold randomico, goldi = gold inventari, g = valor maximo para gold rand()
+    char nomeJogador[20];
 
     srand(time(NULL));
 
@@ -31,6 +32,9 @@ int main(){
     //classe[1] = 1; "Arqueiro";
     //classe[2] = 2; "Mago";
 
+        vJogador[4] = 1;
+        vJogador[5] = 0;
+        vJogador[6] = 25;
 
         //String das Armas
         strcpy(armaCavaleiro[0], "Espada longa");
@@ -103,6 +107,7 @@ int main(){
 
 
 
+
     for(i = 0; numero != 1; i++){
         printf("|==============================|Seja Bem-Vindo|===============================|\n");
         printf("+ [1] - Inicie o jogo\n");
@@ -112,32 +117,34 @@ int main(){
         scanf("%d", &numero);
         switch(numero){
             case 1:
-            while(op != 's'){
+            while(op != 1){
                 // Aqui vem a historia >>>>> printf("");
                 // Grande X, um grande soldado do exercito do Grande Rei, sabe-se que o mais competente dos competentes iria ganhar a suprema recompensa..
                 // a mao de sua filha em casamento..
                 // entao assim, nosso nobre X, arrisca tudo na esperanca de conseguir o coracao da sua amada princesa, enfrentando os grandes perigos dos castelos
                 // e dungeons que ira descobrir, e tambem os guerreiros que falharam e foram amaldicoados a permanecerem nos calaboucos
                 printf("|=============================|Esta preparado?|==============================|\n");
-                printf("|Deseja comecar a sua aventura? [S/N]|\n");
-                scanf("%c", &op);
+                printf("|Deseja comecar a sua aventura? 1 Para 'sim' e 0 para 'nao'|\n");
+                scanf("%d", &op);
+                printf("Como devemos chama-lo, bravo guerreiro?\n");
+                setbuf(stdin, NULL);
+                scanf("%[^\n]s", nomeJogador);
+                setbuf(stdin, NULL);
+                printf("Muito bem, %s. Agora vamos comecar!\n", nomeJogador);
 
-                if(op == 'q'){
-                    vJogador[1] = 9999;
-                }
 
-                if(op == 'n'){
+                if(op == 0){
                     printf("SUA AVENTURA TERMINA AQUI, VOLTE QUANDO ESTIVER PREPARADO!\n");
                     return 0;
                 }
             }
 
 
-                if(op == 's'){
+                if(op == 1){
                     system("cls");
                     printf("Existem 3 tipos de classe que podes escolher!\n");
-                    printf("Deves escolher entre uma das 3... escolha sabiamente:\n");
-                    printf("Digite 0 para Cavaleiro, 1 para Arqueiro e 2 para Mago\n");
+                    printf("Deves escolher entre uma das 3... escolha sabiamente, %s:\n", nomeJogador);
+                    printf("Digite 0 para Cavaleiro, 1 para Arqueiro e 2 para Mago.\n");
                     scanf("%d", &vJogador[0]);
                     if(vJogador[0] < 3 && vJogador[0] >= 0){
 
@@ -255,9 +262,15 @@ int main(){
                                         boolArmaSelecionada = 1;
                                     }
                                 }
+                                if(vJogador[2] == 69){
+                                    vJogador[1] = 9999;
+                                    printf("> Recebestes a bencao divina do vosso Grande rei, Sai'Jax. Tua vida agora eh %d.\n", vJogador[1]);
+                                    printf("\n");
+                                    printf("\n");
+                                }
                                 //Se for falso, dizer que Opção é Inválida
-                                if(boolArmaSelecionada == 0){
-                                   printf("! Opcao Invalida, Não tente fugir!... !\n");
+                                else if(boolArmaSelecionada == 0){
+                                   printf("! Opcao Invalida, Nao tente fugir!... !\n");
                                 }
                             }while(boolArmaSelecionada == 0);
 
@@ -337,7 +350,7 @@ int main(){
                                         printf("\n");
                                         printf("\n");
                                         printf("                               %d                                  %d\n", vJogador[1], vCPU[1]);
-                                        printf("                               --                                  --\n");
+                                        printf("                             %s                                      \n", nomeJogador);
                                         printf("                                o                                   o              \n");
                                         printf("                   .      .    -|-                                 -|-    .        \n");
                                         printf("              .:     :.    :.  //                                  //   .:    :.   \n");
@@ -348,7 +361,7 @@ int main(){
                                         printf("- Inimigo %d HP\n", vCPU[1]);
                                         printf("!======================================!!======================================!\n");
                                         printf("\n");
-                                        Sleep(2000);
+                                        Sleep(SLEEP);
                                     }
                                 }
                                 else{
@@ -406,7 +419,7 @@ int main(){
                                         printf("\n");
                                         printf("!======================================!!======================================!\n");
                                         printf("\n");
-                                        Sleep(2000);
+                                        Sleep(SLEEP);
                                    }
                                 }
 
@@ -416,12 +429,13 @@ int main(){
                                 }
                             }
                             if(vJogador[1] > 0){
+
                                 system("cls");
                                 partida = 0;
                                 vJogador[1] += 30;
                                 printf("\n");
                                 printf("!======================================!\n");
-                                printf("> BOM TRABALHO , DERROTASTE O INIMIGO!\n");
+                                printf("> BOM TRABALHO %s , DERROTASTE O INIMIGO!\n", nomeJogador);
                                 printf("> RECEBESTES UMA RECOMPENSA PELA VITORIA\n");
                                 printf("> UMA POCAO DE 30 DE HP ! \n");
                                 printf("> CONTINUE ASSIM E ALCANCARA A GLORIA!\n");
@@ -429,8 +443,20 @@ int main(){
                                 printf("> TENDO NO TOTAL %d DE DINHEIRO.\n", goldi = goldi + goldr);
                                 printf("> TOTAL DE DANO CAUSADO : %d \n", totalDeDanoCausado);
                                 printf("> TOTAL DE DANO RECEBIDO : %d \n", totalDeDanoRecebido);
+                                printf("+ Experiencia atual : (%d/%d XP)\n", vJogador[5] = vJogador[5] + rand()%15 + 1, vJogador[6]);
                                 printf("!======================================!\n");
                                 printf("\n");
+
+                                if (vJogador[5] >= vJogador[6] && vJogador[1] > 0){ //Se Jogador tiver EXP suficiente para passar de Nível
+                                    while (vJogador[5] >= vJogador[6]){
+                                        vJogador[5] -= vJogador[7]; //EXP Atual = EXP Atual - EXP p/ próximo Nível
+                                        vJogador[4] += 1; //Soma mais 1 Nível
+                                        vJogador[6] = vJogador[6] + 20 + (0.05 * vJogador[6]); //Modificar a quantidade necessária de EXP p/ alcançar o próximo Nível
+                                        printf("!======================================!\n");
+                                        printf("+ Alcancastes um novo feito, chegou ao nivel : %d!\n", vJogador[4]);
+                                        printf("!======================================!\n");
+                                    }
+                                }
                             }
 
                             if(vJogador[1] <= 0){
@@ -458,17 +484,17 @@ int main(){
             case 2:
                 system("cls");
                 printf("!=================!ESTA EH A HISTORIA POR TRAS DA GRANDE GUERRA DE CAIRO!=================!\n");
-                printf(">No reino de Cairo depois de muitas guerras\n");
+                printf(">Apos muitas guerras, o grande Reino de Cairo\n");
                 printf(">conseguiu finalmente encontrar a paz, porem legioes de inimigos caidos e derrotados\n");
                 printf(">surgiram e se aliaram, criando uma especie de fortaleza, para assim com a uniao de seus exercitos\n");
-                printf(">derrotados, consigam acabar com hegemonia do rei Sai'jax para isso, decidiram tocar no unico ponto fraco do Rei\n");
-                printf(">sua filha Bastet, a qual tinha um grande amor, pois foi a unica coisa deixada por sua falecida esposa\n");
-                printf(">entao o exercito dos decaidos decidiram usar sua propria forteleza como prisao para a princesa\n");
+                printf(">derrotados, consigam acabar com a hegemonia do rei Sai'jax, para isso, decidiram tocar no unico ponto fraco do Rei\n");
+                printf(">sua filha Fiora, a qual tinha um grande amor, pois foi a unica coisa deixada por sua falecida esposa\n");
+                printf(">entao o exercito dos decaidos decidiram usar sua propria fortaleza como prisao para a princesa\n");
                 printf(">percebendo entao que sua filha foi raptada por esses soldados, o rei decide convocar um\n");
-                printf(">dos seus melhores guerreiros para uma missao solitaria para encontra-la e traze-la de volta a\n");
-                printf(">salvo, o rei entao como recompensa por tal ato de bravura, decide que ira oferecer a\n");
-                printf(">princesa como esposa e dara enormes riquezas a ele, entao o heroi Kant decide\n");
-                printf(">partir em uma ardua jornada em busca da princesa e almejando a derrota dos inimigos\n");
+                printf(">dos seus melhores guerreiros para uma missao solitaria no fim de encontra-la e traze-la de volta a\n");
+                printf(">salvo, o rei entao como recompensa por tal ato de bravura, decide que oferecera a\n");
+                printf(">princesa como esposa e dara enormes riquezas a ele, entao Vossa Excelencia\n");
+                printf(">parte em uma ardua jornada em busca da princesa e da derrota dos inimigos\n");
                 printf(">do Grande Reino de Cairo.\n");
             break;
             case 3:
@@ -478,7 +504,6 @@ int main(){
                 printf(">Gabriel Alejandro\n");
                 printf(">Felippe Bastos\n");
                 printf(">Nicolas Tapias\n");
-                printf("!=================!!=================!!=================!\n");
             break;
 
             default:
@@ -488,5 +513,5 @@ int main(){
 
         }
     }
- return 0;
+    return 0;
 }
