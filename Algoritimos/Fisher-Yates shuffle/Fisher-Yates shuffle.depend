@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1546642329 source:c:\users\gabri\documents\gabrielgithub\uvv\algoritimos\fisher-yates shuffle\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
