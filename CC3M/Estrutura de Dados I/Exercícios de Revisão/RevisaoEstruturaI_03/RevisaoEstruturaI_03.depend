@@ -1,5 +1,10 @@
 # depslib dependency file v1.0
-1550150215 source:c:\devc\revisaoestruturai_03\main.c
+1550662074 source:c:\devc\revisaoestruturai_03\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1550715052 source:c:\users\gabri\desktop\revisaoestruturai_03\main.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
